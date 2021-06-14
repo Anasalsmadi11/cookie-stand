@@ -1,359 +1,114 @@
 'use strict';
 
-
+let table = document.createElement('table');
 let divTag = document.getElementById('div');
+divTag.appendChild(table);
+
+
+let hour = ['','6 am  ' , '7 am  ' , '8 am  ' , '9 am  ' , '10 am  ' , '11 am  ' , '12 pm  ' , '1 pm  ' , '2 pm  ' , '3 pm  ' , '4 pm  ' , '5 pm  ' , '6 pm  ' , '7 pm  ', 'Daily Location Total' ];
 
 let fullHours = ['6 am' , '7 am' , '8 am' , '9 am' , '10 am' , '11 am' , '12 pm' , '1 pm' , '2 pm' , '3 pm' , '4 pm' , '5 pm' , '6 pm' , '7 pm' ];
 
-let seatle = {
+function City (name , minCust , maxCust , CoookiesperCust , cookiePerHour , total){
 
-  name : 'seatle' ,
+  this.name = name;
+  this.minCust = minCust;
+  this.maxCust = maxCust ;
+  this.CoookiesperCust = CoookiesperCust;
+  this.cookiePerHour = cookiePerHour ;
+  this.total = total ;
 
-  minCust: 23,
+}
 
-  maxCust: 65,
-
-  CoookiesperCust:  6.3,
-
-  cookiePerHour:[],
-
-  total: 0,
-
-  randomCustomer: function(){
+let seatle = new City ('Seatle' , 23 , 65 , 6.3 , [] , 0);
+let Tokyo = new City ('Tokyo' , 3 , 24 , 1.2 , [] , 0);
+let Dubai = new City ('Dubai' , 11 , 38 , 3.7 , [] , 0);
+let Paris = new City ('Paris' , 20 , 38 , 2.3 , [] , 0);
+let Lima = new City ('Lima' , 2 , 16 , 4.6 , [] , 0);
 
 
+City.prototype.getRandomCust = function(minCust ,maxCust) {
 
-    for( let i = 0 ; i< fullHours.length ; i++){
+  return Math.floor(Math.random() * (maxCust - minCust) + minCust);
+};
 
-      let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
 
-      this.cookiePerHour.push (totalPerHour);
 
-      this.total += totalPerHour;
-    }
+City.prototype.randomCustomer = function(){
 
-  },
 
-  render : function(){
+  for( let i = 0 ; i< fullHours.length ; i++){
 
-    let creatArticle = document.createElement('article');
+    let totalPerHour = Math.ceil (this.getRandomCust(this.minCust , this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
 
-    divTag.appendChild(creatArticle);
+    this.cookiePerHour.push (totalPerHour);
 
-    let h2 = document.createElement('h2');
-
-    creatArticle.appendChild(h2);
-
-    h2.textContent = this.name;
-
-    let ul = document.createElement('ul');
-
-    creatArticle.appendChild(ul);
-
-    for( let k = 0 ; k < fullHours.length ; k++){
-
-      let li = document.createElement('li');
-
-      ul.appendChild(li);
-
-      li.textContent = `${fullHours[k]} : ${this.cookiePerHour[k]} cookies`;
-    }
-
-    let li = document.createElement('li');
-
-    ul.appendChild(li);
-
-    li.textContent = `Total : ${this.total} cookies`;
+    this.total += totalPerHour;
   }
+
 
 };
 
-function getRandomCust(minCust, maxCust) {
+City.prototype.header = function(){
 
-  return Math.floor(Math.random() * (maxCust - minCust) + minCust);
-}
+  let hour = ['','6am ' , '7am ' , '8am ' , '9am' , '10am ' , '11am' , '12pm' , '1pm' , '2pm' , '3pm' , '4pm' , '5pm' , '6pm' , '7pm', 'Daily Location Total' ];
 
+  let th = document.createElement('th');
+
+  table.appendChild(th);
+
+  for(let j = 0 ;j < hour.length ; j++){
+
+    let td = document.createElement('td');
+    th.appendChild(td);
+    td.textContent = hour[j];
+
+  }
+};
+
+City.prototype.render =function(){
+
+
+
+  let firstRaw =  document.createElement('tr');
+
+  table.appendChild(firstRaw);
+
+  for(let j = 0 ;j < hour.length ; j++){
+
+
+    let td = document.createElement('td');
+
+    firstRaw.appendChild(td);
+
+    td.textContent = this.cookiePerHour[j];
+  }
+};
+
+
+
+
+seatle.getRandomCust(23,65);
 
 seatle.randomCustomer();
+seatle.header();
 seatle.render();
 
 
-
-let Tokyo = {
-
-  name : 'Tokyo' ,
-
-  minCust: 3,
-
-  maxCust: 24,
-
-  CoookiesperCust:  1.2,
-
-  cookiePerHour:[],
-
-  total: 0,
-
-  randomCustomer: function(){
-
-
-
-    for( let i = 0 ; i< fullHours.length ; i++){
-
-      let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
-
-      this.cookiePerHour.push (totalPerHour);
-
-      this.total += totalPerHour;
-    }
-
-  },
-
-  render : function(){
-
-    let creatArticle = document.createElement('article');
-
-    divTag.appendChild(creatArticle);
-
-    let h2 = document.createElement('h2');
-
-    creatArticle.appendChild(h2);
-
-    h2.textContent = this.name;
-
-    let ul = document.createElement('ul');
-
-    creatArticle.appendChild(ul);
-
-    for( let k = 0 ; k < fullHours.length ; k++){
-
-      let li = document.createElement('li');
-
-      ul.appendChild(li);
-
-      li.textContent = `${fullHours[k]} : ${this.cookiePerHour[k]} cookies`;
-    }
-
-    let li = document.createElement('li');
-
-    ul.appendChild(li);
-
-    li.textContent = `Total : ${this.total} cookies`;
-  }
-
-};
-
-
-
+Tokyo.getRandomCust(23,65);
 Tokyo.randomCustomer();
 Tokyo.render();
 
 
-
-let Dubai = {
-
-  name : 'Dubai' ,
-
-  minCust: 11,
-
-  maxCust: 38,
-
-  CoookiesperCust:  3.7,
-
-  cookiePerHour:[],
-
-  total: 0,
-
-  randomCustomer: function(){
-
-
-
-    for( let i = 0 ; i< fullHours.length ; i++){
-
-      let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
-
-      this.cookiePerHour.push (totalPerHour);
-
-      this.total += totalPerHour;
-    }
-
-  },
-
-  render : function(){
-
-    let creatArticle = document.createElement('article');
-
-    divTag.appendChild(creatArticle);
-
-    let h2 = document.createElement('h2');
-
-    creatArticle.appendChild(h2);
-
-    h2.textContent = this.name;
-
-    let ul = document.createElement('ul');
-
-    creatArticle.appendChild(ul);
-
-    for( let k = 0 ; k < fullHours.length ; k++){
-
-      let li = document.createElement('li');
-
-      ul.appendChild(li);
-
-      li.textContent = `${fullHours[k]} : ${this.cookiePerHour[k]} cookies`;
-    }
-
-    let li = document.createElement('li');
-
-    ul.appendChild(li);
-
-    li.textContent = `Total : ${this.total} cookies`;
-  }
-
-};
-
-
-
+Dubai.getRandomCust(23,65);
 Dubai.randomCustomer();
 Dubai.render();
 
 
-let Paris = {
-
-  name : 'Paris' ,
-
-  minCust: 3,
-
-  maxCust: 24,
-
-  CoookiesperCust:  1.2,
-
-  cookiePerHour:[],
-
-  total: 0,
-
-  randomCustomer: function(){
-
-
-
-    for( let i = 0 ; i< fullHours.length ; i++){
-
-      let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
-
-      this.cookiePerHour.push (totalPerHour);
-
-      this.total += totalPerHour;
-    }
-
-  },
-
-  render : function(){
-
-    let creatArticle = document.createElement('article');
-
-    divTag.appendChild(creatArticle);
-
-    let h2 = document.createElement('h2');
-
-    creatArticle.appendChild(h2);
-
-    h2.textContent = this.name;
-
-    let ul = document.createElement('ul');
-
-    creatArticle.appendChild(ul);
-
-    for( let k = 0 ; k < fullHours.length ; k++){
-
-      let li = document.createElement('li');
-
-      ul.appendChild(li);
-
-      li.textContent = `${fullHours[k]} : ${this.cookiePerHour[k]} cookies`;
-    }
-
-    let li = document.createElement('li');
-
-    ul.appendChild(li);
-
-    li.textContent = `Total : ${this.total} cookies`;
-  }
-
-};
-
-
-
+Paris.getRandomCust(23,65);
 Paris.randomCustomer();
 Paris.render();
 
-
-
-
-let Lima = {
-
-  name : 'Lima' ,
-
-  minCust: 2,
-
-  maxCust: 16,
-
-  CoookiesperCust:  4.6,
-
-  cookiePerHour:[],
-
-  total: 0,
-
-  randomCustomer: function(){
-
-
-
-    for( let i = 0 ; i< fullHours.length ; i++){
-
-      let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
-
-      this.cookiePerHour.push (totalPerHour);
-
-      this.total += totalPerHour;
-    }
-
-  },
-
-  render : function(){
-
-    let creatArticle = document.createElement('article');
-
-    divTag.appendChild(creatArticle);
-
-    let h2 = document.createElement('h2');
-
-    creatArticle.appendChild(h2);
-
-    h2.textContent = this.name;
-
-    let ul = document.createElement('ul');
-
-    creatArticle.appendChild(ul);
-
-    for( let k = 0 ; k < fullHours.length ; k++){
-
-      let li = document.createElement('li');
-
-      ul.appendChild(li);
-
-      li.textContent = `${fullHours[k]} : ${this.cookiePerHour[k]} cookies`;
-    }
-
-    let li = document.createElement('li');
-
-    ul.appendChild(li);
-
-    li.textContent = `Total : ${this.total} cookies`;
-  }
-
-};
-
-
-
+Lima.getRandomCust(23,65);
 Lima.randomCustomer();
 Lima.render();
-
