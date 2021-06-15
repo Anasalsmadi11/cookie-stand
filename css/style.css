@@ -39,6 +39,7 @@ main p {
 main img{
 
     width: 100%;
+    background-color: blanchedalmond;
 }
 
 
@@ -78,4 +79,12 @@ main section:nth-child(5){
 
 * section h2{
     line-height: 2;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(238, 177, 86);
+    color: black;
 }
