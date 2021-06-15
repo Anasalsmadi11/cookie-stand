@@ -1,15 +1,81 @@
-header img{
+*{
 
+    box-sizing:border-box;
+}
+header{
+    text-decoration: none;
+    text-transform: capitalize;
+    padding-bottom: 20px;
+
+}
+header img{
     width: 300px;
 }
 
+header nav{
+display: flex;
+align-items: center;
+float:right;
+margin-top: 20px;
+margin-right: 20px;
+
+}
+header nav a{
+    padding-right: 10px;
+    
+    text-decoration: none;
+    
+}
+
+body{
+    background-color: blanchedalmond;
+
+}
 main p {
    
     padding-left: 50px;
+}
+
+main img{
+
+    width: 100%;
 }
 
 
 table , th , td {
 
     border: 1px black solid;
+}
+
+main section:nth-child(1){
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+main section:nth-child(2) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    
+}
+
+
+main section:nth-child(3){
+    padding-top: 20px;
+    padding-bottom: 20px;
+   
+}
+
+main section:nth-child(4){
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+main section:nth-child(5){
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+* section h2{
+    line-height: 2;
 }
