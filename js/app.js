@@ -1,8 +1,8 @@
 'use strict';
 
-//let divTag = document.getElementById('div');
-let table = document.getElementById('table');
 
+let table = document.getElementById('table');
+let newCity = document.getElementById('newCity');
 
 
 
@@ -24,9 +24,9 @@ City.Cookies =[];
 
 let Seatle = new City ('Seatle' , 23 , 65 , 6.3 );
 let Tokyo = new City ('Tokyo' , 3 , 24 , 1.2 );
-let Dubai = new City ('Dubai' , 11 , 38 , 3.7 , [] , 0);
-let Paris = new City ('Paris' , 20 , 38 , 2.3 , [] , 0);
-let Lima = new City ('Lima' , 2 , 16 , 4.6 , [] , 0);
+let Dubai = new City ('Dubai' , 11 , 38 , 3.7 , 0);
+let Paris = new City ('Paris' , 20 , 38 , 2.3 , 0);
+let Lima = new City ('Lima' , 2 , 16 , 4.6 , 0);
 
 
 
@@ -154,6 +154,7 @@ function getRandomCust(min, max) {
 
   return Math.floor(Math.random() * (max - min +1) + min); //The maximum is exclusive and the minimum is inclusive
 }
+
 Tokyo.randomCustomer();
 headTable();
 Tokyo.render();
@@ -169,7 +170,28 @@ Seatle.render();
 Dubai.randomCustomer();
 Dubai.render();
 
-
 Lima.randomCustomer();
 Lima.render();
-footerTable();
+
+
+function submission(event){
+
+  event.preventDefault();
+  let cityName = event.target.cityName.value;
+  let cityMin = event.target.cityMin.value;
+  let cityMax = event.target.cityMax.value;
+  let averCookies = event.target.averCookies.value;
+
+
+
+  let theNewcity = new City(cityName, cityMin , cityMax , averCookies);
+
+  theNewcity.randomCustomer();
+
+  theNewcity.render();
+  footerTable();
+
+}
+//console.log(submission());
+newCity.addEventListener('submit' , submission);
+
