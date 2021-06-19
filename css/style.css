@@ -26,6 +26,16 @@ header nav a{
     text-decoration: none;
     
 }
+header a:hover{
+    background-color: darkblue;
+    color: white;
+}
+header a{
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+
+}
 
 body{
     background-color: blanchedalmond;
@@ -45,8 +55,34 @@ main img{
 
 table , th , td {
 
-    border: 1px black solid;
+    border: 1.5px black solid;
+    margin-bottom: 50px;
+    line-height: 1.5;
+    text-align: center;
+    
 }
+  td:hover {
+
+background-color: yellow;
+
+}
+th{
+    background-color: blue;
+    color: white;
+    font-family: 'Teko', sans-serif;
+    padding: 10px 15px;
+   
+}
+table{
+    margin-left: 20px;
+    
+
+}
+table td{
+    padding: 10px 15px;
+}
+
+
 
 main section:nth-child(1){
   padding-top: 20px;
@@ -77,8 +113,25 @@ main section:nth-child(5){
     padding-bottom: 20px;
 }
 
+.section1 img{
+    display: grid;
+    display: inline-block;
+    width: 30%;
+    margin: 10px;
+}
+
 * section h2{
     line-height: 2;
+    font-family: 'Roboto', sans-serif;
+}
+section h2:hover{
+    background-color: blue;
+    color: cornsilk;
+}
+
+*section ul{
+    font-family: 'Oswald', sans-serif;
+
 }
 
 footer{
@@ -87,4 +140,44 @@ footer{
     justify-content: center;
     background-color: rgb(238, 177, 86);
     color: black;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+header{
+    font-family: 'Teko', sans-serif;
+    font-size: 30px;
+    margin:20px;
+}
+
+legend{
+    font-family: 'Teko', sans-serif;
+    margin-left: 20px;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+#newCity label{
+    margin-left: 25px;
+    font-family: 'Roboto', sans-serif;
+    
+}
+#newCity label:hover{
+
+    background-color: black;
+    color: white;
+}
+
+#backLink{
+
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+#backLink a:hover{
+    background-color: darkblue;
+    color: white;
+    
+    
+
 }
