@@ -27,9 +27,9 @@ let seatle = {
 
       let totalPerHour = Math.ceil (getRandomCust(this.minCust,this.maxCust) * this.CoookiesperCust); // Math.ceil : to remove the decimele to the higher number
 
-      this.cookiePerHour.push (totalPerHour);
+      seatle.cookiePerHour.push (totalPerHour);
 
-      this.total += totalPerHour;
+      seatle.total += totalPerHour;
     }
 
   },
@@ -68,14 +68,15 @@ let seatle = {
 
 };
 
-function getRandomCust(minCust, maxCust) {
+function getRandomCust(small, big) {
 
-  return Math.floor(Math.random() * (maxCust - minCust) + minCust);
+  return Math.floor(Math.random() * (big - small) + small);
 }
 
 
 seatle.randomCustomer();
 seatle.render();
+
 
 
 
