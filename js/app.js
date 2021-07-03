@@ -9,7 +9,7 @@ let table = document.getElementById('table');
 let fullHours = ['6 am' , '7 am' , '8 am' , '9 am' , '10 am' , '11 am' , '12 pm' , '1 pm' , '2 pm' , '3 pm' , '4 pm' , '5 pm' , '6 pm' , '7 pm' ];
 
 function City (name , min , max , averCookie ){
-
+// constructor function
   this.name = name;
   this.minCust = min;
   this.maxCust = max ;
@@ -42,7 +42,6 @@ City.prototype.randomCustomer = function(){
 
     this.total += totalPerHour;
   }
-
 
 };
 
@@ -154,8 +153,13 @@ function getRandomCust(min, max) {
 
   return Math.floor(Math.random() * (max - min +1) + min); //The maximum is exclusive and the minimum is inclusive
 }
-Tokyo.randomCustomer();
 headTable();
+
+Seatle.randomCustomer();
+Seatle.render();
+
+
+Tokyo.randomCustomer();
 Tokyo.render();
 
 
